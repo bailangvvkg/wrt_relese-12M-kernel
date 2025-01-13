@@ -10,17 +10,17 @@ on:
         type: choice
         default: jdcloud_ipq60xx_immwrt
         options:
-          - jdcloud_ipq60xx_libwrt
-          - jdcloud_ipq60xx_immwrt
-          - jdcloud_ipq60xx_lede
-          - cmcc_rax3000m_immwrt
-          - redmi_ax6000_immwrt21
-          - jdcloud_ax6000_immwrt
-          - redmi_ax5_immwrt
-          - zn_m2_libwrt
-          - x64_immwrt
+          # - jdcloud_ipq60xx_libwrt
+          # - jdcloud_ipq60xx_immwrt
+          # - jdcloud_ipq60xx_lede
+          # - cmcc_rax3000m_immwrt
+          # - redmi_ax6000_immwrt21
+          # - jdcloud_ax6000_immwrt
+          # - redmi_ax5_immwrt
+          # - zn_m2_libwrt
+          # - x64_immwrt
           - jdcloud_ipq60xx_k612
-          - n1_immwrt
+          # - n1_immwrt
       runs-on:
         required: true
         description: Runs on...
