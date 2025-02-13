@@ -185,3 +185,7 @@ jobs:
           files: ${{ inputs.model == 'n1_immwrt' && env.PACKAGED_OUTPUTPATH || './firmware' }}/*.*
           # files: ${{ inputs.model == 'n1_immwrt' && env.PACKAGED_OUTPUTPATH || '${{ env.OPENWRT_PATH }}/firmware' }}/*.*
           body_path: ./release_body.txt
+
+      - name:   自定义脚本
+        run: |
+          find $OPENWRT_PATH -name *.bin
