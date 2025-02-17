@@ -167,7 +167,9 @@ echo "CONFIG_PACKAGE_luci-app-filemanager=y" >> ./.config
 # echo "CONFIG_PACKAGE_coremark=n" >> ./.config
 
 make download -j$(($(nproc) * 2))
-make -j$(($(nproc) + 1)) || make -j1 V=s
+# make -j$(($(nproc) + 1)) || make -j1 V=s
+
+make -j$(($(nproc) + 1)) V=sc
 
 FIRMWARE_DIR="$BASE_PATH/firmware"
 \rm -rf "$FIRMWARE_DIR"
