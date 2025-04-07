@@ -94,3 +94,6 @@ esac
 
 uci commit wireless
 /etc/init.d/network restart
+
+uci set luci.apply.holdoff='1'
+uci commit luci
