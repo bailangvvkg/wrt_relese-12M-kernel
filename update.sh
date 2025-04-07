@@ -24,7 +24,7 @@ FEEDS_CONF="feeds.conf.default"
 GOLANG_REPO="https://github.com/sbwml/packages_lang_golang"
 GOLANG_BRANCH="24.x"
 THEME_SET="argon"
-LAN_ADDR="192.168.1.1"
+LAN_ADDR="192.168.10.1"
 
 clone_repo() {
     if [[ ! -d $BUILD_DIR ]]; then
@@ -716,6 +716,33 @@ update_dns_app_menu_location() {
         sed -i 's/"services"/"dns"/g' "$adg_path"
     fi
 }
+
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+	branch="$1" repourl="$2" && shift 2
+	git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+	repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+	cd $repodir && git sparse-checkout set $@
+	mv -f $@ ../package
+	cd .. && rm -rf $repodir
+}
+
+#删除官方的默认插件
+# rm -rf ../feeds/luci/applications/luci-app-{passwall*,mosdns,dockerman,dae*,bypass*}
+# rm -rf ../feeds/packages/net/{shadowsocks-rust,shadowsocksr-libev,xray*,v2ray*,dae*,sing-box,geoview}
+rm -rf ../feeds/luci/applications/luci-app-{dae*}
+rm -rf ../feeds/packages/net/{dae*}
+
+# QiuSimons luci-app-daed
+git clone https://github.com/QiuSimons/luci-app-daed package/dae
+mkdir -p Package/libcron && wget -O Package/libcron/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/libs/libcron/Makefile
+
+# # luci-app-daed-next
+# git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
+
+git_sparse_clone main https://github.com/kenzok8/small-package daed-next luci-app-daed-next gost luci-app-gost luci-nginxer luci-app-adguardhome
+
+git_sparse_clone main https://github.com/kiddin9/kwrt-packages natter2 luci-app-natter2 luci-app-cloudflarespeedtest
 
 main() {
     clone_repo
