@@ -52,9 +52,6 @@ jobs:
           remove-cached-tools: "true"
           remove-swapfile: "true"
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -68,12 +65,26 @@ jobs:
           sudo -E systemctl daemon-reload
           sudo -E timedatectl set-timezone "Asia/Shanghai"
 
+      - name: Combine Disks(合并磁盘)
+        uses: easimon/maximize-build-space@master
+        with:
+          swap-size-mb: 2048
+          temp-reserve-mb: 100
+          root-reserve-mb: 2048
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Initialization Values
         run: |
           export BUILD_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
           echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
           export BUILD_SRC=$(awk -F"=" '/REPO_URL/ {print $NF}' "./compilecfg/${{ inputs.model }}.ini")
           echo "BUILD_SRC=$BUILD_SRC" >> $GITHUB_ENV
+
+          # sudo mkdir -p $OPENWRT_PATH/build_wrt
+          # sudo chown $USER:$USER $OPENWRT_PATH/build_wrt
+          sudo ln -s $OPENWRT_PATH $GITHUB_WORKSPACE
 
       - name: Pre Clone
         run: ./pre_clone_action.sh ${{ inputs.model }}
