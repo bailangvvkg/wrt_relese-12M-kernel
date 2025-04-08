@@ -67,7 +67,7 @@ echo "# CONFIG_BPF_TOOLCHAIN_NONE is not set" >> ./.config
 echo "CONFIG_KERNEL_BPF_EVENTS=y" >> ./.config
 echo "CONFIG_KERNEL_CGROUP_BPF=y" >> ./.config
 echo "CONFIG_KERNEL_DEBUG_INFO=y" >> ./.config
-echo "CONFIG_KERNEL_DEBUG_INFO_BTF=y" >> ./.config
+# echo "CONFIG_KERNEL_DEBUG_INFO_BTF=y" >> ./.config
 echo "# CONFIG_KERNEL_DEBUG_INFO_REDUCED is not set" >> ./.config
 echo "CONFIG_KERNEL_XDP_SOCKETS=y" >> ./.config
 
