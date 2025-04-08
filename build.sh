@@ -96,24 +96,24 @@ echo "CONFIG_PACKAGE_luci-app-mihomo=n" >> ./.config
 # 可以让FinalShell查看文件列表并且ssh连上不会自动断开
 echo "CONFIG_PACKAGE_openssh-sftp-server=y" >> ./.config
 # 解析、查询、操作和格式化 JSON 数据
-echo "CONFIG_PACKAGE_jq=y" >> ./.config
+# echo "CONFIG_PACKAGE_jq=y" >> ./.config
 # base64 修改码云上的内容 需要用到
-echo "CONFIG_PACKAGE_coreutils-base64=y" >> ./.config
-echo "CONFIG_PACKAGE_coreutils=y" >> ./.config
+# echo "CONFIG_PACKAGE_coreutils-base64=y" >> ./.config
+# echo "CONFIG_PACKAGE_coreutils=y" >> ./.config
 # 简单明了的系统资源占用查看工具
 echo "CONFIG_PACKAGE_btop=y" >> ./.config
 # 多网盘存储
-echo "CONFIG_PACKAGE_luci-app-alist=y" >> ./.config
+# echo "CONFIG_PACKAGE_luci-app-alist=y" >> ./.config
 # 强大的工具Lucky大吉(需要添加源或git clone)
-echo "CONFIG_PACKAGE_luci-app-lucky=y" >> ./.config
+# echo "CONFIG_PACKAGE_luci-app-lucky=y" >> ./.config
 # 网络通信工具
-echo "CONFIG_PACKAGE_curl=y" >> ./.config
-echo "CONFIG_PACKAGE_tcping=y" >> ./.config
+# echo "CONFIG_PACKAGE_curl=y" >> ./.config
+# echo "CONFIG_PACKAGE_tcping=y" >> ./.config
 # BBR 拥塞控制算法(终端侧)
 # echo "CONFIG_PACKAGE_kmod-tcp-bbr=y" >> ./.config
 # echo "CONFIG_DEFAULT_tcp_bbr=y" >> ./.config
 # 磁盘管理
-echo "CONFIG_PACKAGE_luci-app-diskman=y" >> ./.config
+# echo "CONFIG_PACKAGE_luci-app-diskman=y" >> ./.config
 # echo "CONFIG_PACKAGE_cfdisk=y" >> ./.config
 # 其他调整
 # 大鹅
@@ -147,11 +147,11 @@ echo "CONFIG_PACKAGE_luci-app-dockerman=y" >> ./.config
 # filebrowser-go
 # echo "CONFIG_PACKAGE_luci-app-filebrowser-go=y" >> ./.config
 # 图形化web UI luci-app-uhttpd	
-echo "CONFIG_PACKAGE_luci-app-uhttpd=y" >> ./.config
+# echo "CONFIG_PACKAGE_luci-app-uhttpd=y" >> ./.config
 # 多播
 # echo "CONFIG_PACKAGE_luci-app-syncdial=y" >> ./.config
 # MosDNS
-echo "CONFIG_PACKAGE_luci-app-mosdns=y" >> ./.config
+# echo "CONFIG_PACKAGE_luci-app-mosdns=y" >> ./.config
 # Natter2 报错
 # echo "CONFIG_PACKAGE_luci-app-natter2=y" >> ./.config
 # 文件管理器
@@ -163,7 +163,7 @@ echo "CONFIG_PACKAGE_luci-app-mosdns=y" >> ./.config
 # Go语言解析
 # echo "CONFIG_PACKAGE_golang=y" >> ./.config
 # Git
-echo "CONFIG_PACKAGE_git-http=y" >> ./.config
+# echo "CONFIG_PACKAGE_git-http=y" >> ./.config
 # Nginx替换Uhttpd
 # echo "CONFIG_PACKAGE_nginx-mod-luci=y" >> ./.config
 # Nginx的图形化界面
