@@ -17,3 +17,7 @@ if uci show dropbear | grep -q "DirectInterface"; then
     uci commit dropbear
     /etc/init.d/dropbear restart
 fi
+
+# 设置应用时间倒计时1秒
+uci set luci.apply.holdoff='1'
+uci commit luci
