@@ -21,3 +21,6 @@ fi
 # 设置应用时间倒计时1秒
 uci set luci.apply.holdoff='1'
 uci commit luci
+
+# 修复识别内存错误导致tmp小于内存
+mount -o remount,size=$(awk '/MemTotal/ {print $2"k"}' /proc/meminfo) /tmp
