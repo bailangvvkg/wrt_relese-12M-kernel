@@ -746,11 +746,11 @@ update_lucky() {
 }
 
 my_seeting() {
+    cd $BUILD_DIR
+
     #开启内存回收补丁
-    cat >> .config <<EOF
-CONFIG_KERNEL_SKB_RECYCLER=y
-CONFIG_KERNEL_SKB_RECYCLER_MULTI_CPU=y
-EOF
+    echo "CONFIG_KERNEL_SKB_RECYCLER=y" >> ./.config
+    echo "CONFIG_KERNEL_SKB_RECYCLER_MULTI_CPU=y" >> ./.config
 
     #编译器优化
     # if [[ $WRT_TARGET != *"X86"* ]]; then
