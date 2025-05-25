@@ -103,8 +103,7 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
         run: |
           sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
-          sudo -E apt -yqq install dos2unix
-          sudo -E apt -yqq install libfuse-dev
+          sudo -E apt -yqq install dos2unix libfuse-dev clang-15 llvm-15 npm
           sudo -E apt -yqq autoremove --purge
           sudo -E apt -yqq autoclean
           sudo -E apt -yqq clean
@@ -198,13 +197,15 @@ jobs:
           echo "ccache: $(du -sh ./action_build/.ccache | cut -f 1)"
           echo "staging: $(du -sh ./action_build/staging_dir | cut -f 1)"
 
-      - name: Machine Information
+      - name: Machine Information(机器信息)
         run: |
-          echo "=============================================="
+          echo "======================="
           lscpu | grep -E "name|Core|Thread"
-          echo "=============================================="
+          echo "======================="
           df -h
-          echo "=============================================="
+          echo "======================="
+          du -h --max-depth=1
+          echo "======================="
 
       - name: Package OpenWrt Firmware
         if: ${{ inputs.model == 'n1_immwrt' }}
@@ -221,7 +222,7 @@ jobs:
           echo "源码：${{ env.BUILD_SRC }}" >> release_body.txt
           echo "Kernel: ${{ env.KVER }}" >> release_body.txt
           echo "WIFI密码: 12345678" >> release_body.txt
-          echo "LAN地址: 192.168.1.1" >> release_body.txt
+          echo "LAN地址: 192.168.10.1" >> release_body.txt
           echo "插件：" >> release_body.txt
           echo "$(grep -oP "luci-app(-[a-zA-Z0-9]{1,}){1,}" ./firmware/*.manifest | awk -F":" '{print $NF}')"  >> release_body.txt
 
