@@ -41,7 +41,7 @@ $BASE_PATH/update.sh "$REPO_URL" "$REPO_BRANCH" "$BASE_PATH/$BUILD_DIR" "$COMMIT
 
 \cp -f "$CONFIG_FILE" "$BASE_PATH/$BUILD_DIR/.config"
 
-# echo 开始 && pwd && ls
+echo 开始 && pwd && ls && echo 枚举 && ll
 # cd $BUILD_DIR
 # echo 后面 && pwd && ls
 # cat .config
@@ -73,15 +73,15 @@ echo "CONFIG_BPF_TOOLCHAIN_NONE=n" >> $BASE_PATH/$BUILD_DIR/.config
 echo "CONFIG_PACKAGE_bpftool-full=y" >> $BASE_PATH/$BUILD_DIR/.config
 
 #修改jdc re-ss-01 (亚瑟) 的内核大小为12M
-sed -i "/^define Device\/jdcloud_re-ss-01/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" target/linux/qualcommax/image/ipq60xx.mk
+sed -i "/^define Device\/jdcloud_re-ss-01/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" $BASE_PATH/$BUILD_DIR/target/linux/qualcommax/image/ipq60xx.mk
 #修改jdc re-cs-02 (雅典娜) 的内核大小为12M
-sed -i "/^define Device\/jdcloud_re-cs-02/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" target/linux/qualcommax/image/ipq60xx.mk
+sed -i "/^define Device\/jdcloud_re-cs-02/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" $BASE_PATH/$BUILD_DIR/target/linux/qualcommax/image/ipq60xx.mk
 #修改jdc re-cs-07 (太乙) 的内核大小为12M
-sed -i "/^define Device\/jdcloud_re-cs-07/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" target/linux/qualcommax/image/ipq60xx.mk
+sed -i "/^define Device\/jdcloud_re-cs-07/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" $BASE_PATH/$BUILD_DIR/target/linux/qualcommax/image/ipq60xx.mk
 #修改mr7350 (领势LINKSYS MR7350) 的内核大小为12M
-sed -i "/^define Device\/linksys_mr7350/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" target/linux/qualcommax/image/ipq60xx.mk
+sed -i "/^define Device\/linksys_mr7350/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" $BASE_PATH/$BUILD_DIR/target/linux/qualcommax/image/ipq60xx.mk
 #修改redmi_ax5-jdcloud(京东云红米AX5) 的内核大小为12M
-sed -i "/^define Device\/redmi_ax5-jdcloud/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" target/linux/qualcommax/image/ipq60xx.mk
+sed -i "/^define Device\/redmi_ax5-jdcloud/,/^endef/ { /KERNEL_SIZE := 6144k/s//KERNEL_SIZE := 12288k/ }" $BASE_PATH/$BUILD_DIR/target/linux/qualcommax/image/ipq60xx.mk
 # 想要剔除的
 # echo "CONFIG_PACKAGE_htop=n" >> $BASE_PATH/$BUILD_DIR/.config
 # echo "CONFIG_PACKAGE_iperf3=n" >> $BASE_PATH/$BUILD_DIR/.config
