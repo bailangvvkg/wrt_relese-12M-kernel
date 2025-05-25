@@ -106,7 +106,7 @@ jobs:
           sudo -E apt -yqq install dos2unix
           sudo -E apt -yqq install libfuse-dev
           # sudo -E apt -yqq install clang-15 llvm-15
-          sudo -E apt -yqq install clang-19 libclang-19-dev lld-19 liblld-19-dev
+          sudo -E apt -yqq install clang-16 libclang-16-dev lld-16 liblld-16-dev
           # curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
           # sudo apt-get install -y nodejs
           # sudo -E apt -yqq lld-20 lldb-20 clangd-20 clang-tidy-20 llvm-20
