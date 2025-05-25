@@ -106,6 +106,10 @@ jobs:
           sudo -E apt -yqq install dos2unix
           sudo -E apt -yqq install libfuse-dev
           # sudo -E apt -yqq install clang-15 llvm-15
+          sudo -E apt -yqq install -y wget gnupg lsb-release software-properties-common
+          wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/llvm.gpg
+          echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] https://apt.llvm.org/jammy/ llvm-toolchain-jammy-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list
+          sudo apt update
           sudo -E apt -yqq install clang-20 llvm-20
           # sudo -E apt -yqq lld-20 lldb-20 clangd-20 clang-tidy-20 llvm-20
           sudo -E apt -yqq autoremove --purge
