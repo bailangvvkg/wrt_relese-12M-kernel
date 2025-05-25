@@ -41,7 +41,7 @@ $BASE_PATH/update.sh "$REPO_URL" "$REPO_BRANCH" "$BASE_PATH/$BUILD_DIR" "$COMMIT
 
 \cp -f "$CONFIG_FILE" "$BASE_PATH/$BUILD_DIR/.config"
 
-echo 开始 && pwd && ls && echo 枚举 && ll
+echo 开始 && pwd && ls
 # cd $BUILD_DIR
 # echo 后面 && pwd && ls
 # cat .config
