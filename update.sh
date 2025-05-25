@@ -746,7 +746,9 @@ update_lucky() {
 }
 
 my_seeting() {
+    echo 开始 && pwd && ls
     cd $BUILD_DIR
+    echo 后面 && pwd && ls
 
     #开启内存回收补丁
     echo "CONFIG_KERNEL_SKB_RECYCLER=y" >> ./.config
