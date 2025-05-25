@@ -37,6 +37,10 @@ if [[ -d $BASE_PATH/action_build ]]; then
     BUILD_DIR="action_build"
 fi
 
+$BASE_PATH/update.sh "$REPO_URL" "$REPO_BRANCH" "$BASE_PATH/$BUILD_DIR" "$COMMIT_HASH"
+
+\cp -f "$CONFIG_FILE" "$BASE_PATH/$BUILD_DIR/.config"
+
 # echo 开始 && pwd && ls
 # cd $BUILD_DIR
 # echo 后面 && pwd && ls
@@ -182,10 +186,6 @@ echo "CONFIG_PACKAGE_zoneinfo-all=y" >> $BASE_PATH/$BUILD_DIR/.config
 # Caddy
 echo "CONFIG_PACKAGE_luci-app-caddy=y" >> $BASE_PATH/$BUILD_DIR/.config
 
-
-$BASE_PATH/update.sh "$REPO_URL" "$REPO_BRANCH" "$BASE_PATH/$BUILD_DIR" "$COMMIT_HASH"
-
-\cp -f "$CONFIG_FILE" "$BASE_PATH/$BUILD_DIR/.config"
 
 cd "$BASE_PATH/$BUILD_DIR"
 make defconfig
