@@ -763,7 +763,7 @@ function git_sparse_clone() {
 
 # QiuSimons luci-app-daed
 git clone https://github.com/QiuSimons/luci-app-daed package/dae
-mkdir -p Package/libcron && wget -O Package/libcron/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/libs/libcron/Makefile
+mkdir -p $BUILD_DIR/Package/libcron && wget -O Package/libcron/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/libs/libcron/Makefile
 
 # # luci-app-daed-next
 # git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
