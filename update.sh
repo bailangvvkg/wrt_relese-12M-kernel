@@ -745,6 +745,34 @@ update_lucky() {
     fi
 }
 
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+	branch="$1" repourl="$2" && shift 2
+	git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+	repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+	cd $repodir && git sparse-checkout set $@
+	mv -f $@ ../package
+	cd .. && rm -rf $repodir
+}
+
+#删除官方的默认插件
+# rm -rf $BUILD_DIR/feeds/luci/applications/luci-app-{passwall*,mosdns,dockerman,dae*,bypass*}
+# rm -rf $BUILD_DIR/feeds/packages/net/{shadowsocks-rust,shadowsocksr-libev,xray*,v2ray*,dae*,sing-box,geoview}
+# rm -rf $BUILD_DIR/feeds/luci/applications/luci-app-{dae*}
+# rm -rf $BUILD_DIR/feeds/packages/net/{dae*}
+
+# QiuSimons luci-app-daed
+git clone https://github.com/QiuSimons/luci-app-daed package/dae
+mkdir -p Package/libcron && wget -O Package/libcron/Makefile https://raw.githubusercontent.com/immortalwrt/packages/refs/heads/master/libs/libcron/Makefile
+
+# # luci-app-daed-next
+# git clone https://github.com/sbwml/luci-app-daed-next package/daed-next
+
+git_sparse_clone main https://github.com/kenzok8/small-package daed-next luci-app-daed-next gost luci-app-gost luci-nginxer luci-app-adguardhome
+
+git_sparse_clone main https://github.com/kiddin9/kwrt-packages natter2 luci-app-natter2 luci-app-cloudflarespeedtest luci-app-nfs luci-app-caddy openwrt-caddy
+
+
 main() {
     clone_repo
     clean_up
