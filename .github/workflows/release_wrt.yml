@@ -107,14 +107,19 @@ jobs:
           sudo -E apt -yqq install libfuse-dev
           # sudo -E apt -yqq install clang-15 llvm-15
           sudo -E apt -yqq install clang-19 libclang-19-dev lld-19 liblld-19-dev
-          curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-          sudo -E apt-get install -y nodejs
+          # curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+          # sudo apt-get install -y nodejs
           # sudo -E apt -yqq lld-20 lldb-20 clangd-20 clang-tidy-20 llvm-20
           sudo -E apt -yqq autoremove --purge
           sudo -E apt -yqq autoclean
           sudo -E apt -yqq clean
           sudo -E systemctl daemon-reload
           sudo -E timedatectl set-timezone "Asia/Shanghai"
+
+      - name: 安装 Node.js（最新 LTS）
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 你可以写 'lts/*' 或具体版本
 
       - name: Initialization Environment(安装依赖环境)
         env:
