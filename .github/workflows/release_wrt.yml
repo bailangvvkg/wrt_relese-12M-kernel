@@ -105,8 +105,8 @@ jobs:
           sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
           sudo -E apt -yqq install dos2unix
           sudo -E apt -yqq install libfuse-dev
-          # sudo -E apt -yqq install clang-15 llvm-15
-          sudo -E apt -yqq install clang-19 llvm-19
+          sudo -E apt -yqq install clang-15 llvm-15
+          # sudo -E apt -yqq install clang-19 llvm-19
           # curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
           # sudo apt-get install -y nodejs
           # sudo -E apt -yqq lld-20 lldb-20 clangd-20 clang-tidy-20 llvm-20
